@@ -13,6 +13,7 @@ const UserLogin = () => {
             email,
             password
         })
+        console.log(userData)
         setEmail("")
         setPassword("")
     }
