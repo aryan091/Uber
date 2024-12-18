@@ -27,6 +27,7 @@ const UserLogin = () => {
             setUser(data.user)
             localStorage.setItem('token' , data.token)
             console.log(response.data.user)
+            navigate("/homeScreen")
         }
 
         setEmail("")
