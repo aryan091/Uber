@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 const CaptainSignUp = () => {
     const [email , setEmail] = useState("")
     const [password , setPassword] = useState("")
-    const [firstName , setFirstName] = useState("")
-    const [lastName , setLastName] = useState("")
+    const [firstname , setfirstname] = useState("")
+    const [lastname , setlastname] = useState("")
 
     const [captainData , setCaptainData] = useState({})
 
     const submitHandler = (e) => {
         e.preventDefault()
         setCaptainData({
-          fullName:{
-                firstName:firstName,
-                lastName:lastName
+          fullname:{
+                firstname:firstname,
+                lastname:lastname
             },
             email,
             password
@@ -22,8 +22,8 @@ const CaptainSignUp = () => {
         console.log(captainData)
         setEmail("")
         setPassword("")
-        setFirstName("")
-        setLastName("")
+        setfirstname("")
+        setlastname("")
     }
     return (
         <div className="p-8 h-screen flex flex-col justify-between">
@@ -43,8 +43,8 @@ const CaptainSignUp = () => {
                 className="bg-[#eeeeee] mb-7 rounded px-2 py-2 border w-1/2 text-lg placeholder:text-sm"
                 type="email"
                 placeholder="First Name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                value={firstname}
+                onChange={(e) => setfirstname(e.target.value)}
               />
               <input
                 required
@@ -52,8 +52,8 @@ const CaptainSignUp = () => {
                 className="bg-[#eeeeee] mb-7 rounded px-2 py-2 border w-1/2 text-lg placeholder:text-sm"
                 type="email"
                 placeholder="Last Name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                value={lastname}
+                onChange={(e) => setlastname(e.target.value)}
               />   
             </div>
               <h3 className="text-lg font-medium mb-2">What's your email</h3>
