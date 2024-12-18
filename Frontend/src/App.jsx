@@ -7,6 +7,7 @@ import CaptainLogin from './pages/CaptainLogin'
 import CaptainSignUp from './pages/CaptainSignUp'
 import HomeScreen from './pages/HomeScreen'
 import UserLogout from './pages/UserLogout'
+import UserProtectWrapper from './pages/UserProtectWrapper'
 
 const App = () => {
   return (

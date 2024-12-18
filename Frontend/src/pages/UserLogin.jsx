@@ -20,8 +20,8 @@ const UserLogin = () => {
             password
         }
         console.log(userData)
-        const response = axios.post(`${import.meta.env.VITE_BASE_URL}/users/login` , userData)
-
+        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login` , userData)
+        console.log((await response).status)
         if(response.status === 200){
             const data = response.data
             setUser(data.user)
@@ -29,6 +29,7 @@ const UserLogin = () => {
             console.log(response.data.user)
             navigate("/homeScreen")
         }
+      
 
         setEmail("")
         setPassword("")
