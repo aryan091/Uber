@@ -8,7 +8,6 @@ const UserSignUp = () => {
     const [firstname , setfirstname] = useState("")
     const [lastname , setlastname] = useState("")
 
-    const [userData , setUserData] = useState({})
 
     const navigate = useNavigate()
     const {user , setUser} = React.useContext(UserDataContext)
