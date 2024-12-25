@@ -18,7 +18,7 @@ const Riding = () => {
 
         <div className='h-1/2 px-2'>
         
-        <div className='flex items-center justify-between px-3'>
+        <div className='flex items-center justify-between p-3'>
           <img className='h-12 rounded-full' src="https://sense.iitd.ac.in/public/storage/students_image/aaaaaa_1696412611.jpg" alt="" />
           <div className='text-right'>
             <h2 className='font-medium text-lg'>Aryan</h2>
