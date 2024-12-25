@@ -1,7 +1,28 @@
-import React from "react";
+import React, {useState , useRef} from "react";
 import { Link } from "react-router-dom";
 import CaptainDetails from "../components/CaptainDetails";
+import RidePopUp from "./RidePopUp";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import "remixicon/fonts/remixicon.css";
 const CaptainScreen = () => {
+
+  const [ridePopUpPanel , setRidePopUpPanel] = useState(true)
+
+  const ridePopUpRef = useRef(null); 
+
+  useGSAP(() => {
+    if (ridePopUpPanel) {
+      gsap.to(ridePopUpRef.current, {
+        transform: "translateY(0%)",
+      });
+    } else {
+      gsap.to(ridePopUpRef.current, {
+        transform: "translateY(100%)",
+      });
+    }
+  }, [ridePopUpPanel]);
+
   return (
     <div className="h-screen">
 
@@ -30,6 +51,10 @@ const CaptainScreen = () => {
 
       <div className="h-2/5 p-6">
         <CaptainDetails/>
+      </div>
+
+      <div ref={ridePopUpRef}  className="fixed w-full bg-white z-10 translate-y-full bottom-0 px-3 py-8">
+        <RidePopUp setRidePopUpPanel={setRidePopUpPanel}/>
       </div>
 
 
