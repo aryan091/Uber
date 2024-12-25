@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const ConfirmRidePopUp = ({setConfirmRidePopUpPanel , setRidePopUpPanel}) => {
   return (
@@ -18,7 +19,7 @@ const ConfirmRidePopUp = ({setConfirmRidePopUpPanel , setRidePopUpPanel}) => {
       <div className="flex items-center justify-start gap-4">
             <img
               className="h-12 rounded-full"
-              src="https://sense.iitd.ac.in/public/storage/students_image/aaaaaa_1696412611.jpg"
+              src="https://avatars.githubusercontent.com/u/59964730?v=4"
               alt=""
             />
             <h4 className="text-lg font-medium">Aryan Daftari</h4>
@@ -70,11 +71,8 @@ const ConfirmRidePopUp = ({setConfirmRidePopUpPanel , setRidePopUpPanel}) => {
           }
         } className="w-1/2  font-medium bg-gray-200 text-black py-3 mt-3">Cancel</button>
 
-<button onClick={
-          () => {
-             
-          }
-        } className="w-1/2 font-medium bg-black text-white py-3 mt-3">Confirm</button>
+<Link to='/captainRiding' className="w-1/2 flex justify-center font-medium bg-black text-white py-3 mt-3">Confirm</Link>
+
         </div>
 
         

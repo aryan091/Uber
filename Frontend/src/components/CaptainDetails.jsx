@@ -7,7 +7,7 @@ const CaptainDetails = () => {
           <div className="flex items-center justify-start gap-4">
             <img
               className="h-12 rounded-full"
-              src="https://sense.iitd.ac.in/public/storage/students_image/aaaaaa_1696412611.jpg"
+              src="https://avatars.githubusercontent.com/u/48705673?v=4"
               alt=""
             />
             <h4 className="text-lg font-medium">Ankur Daftari</h4>
