@@ -39,7 +39,6 @@ const getDistanceTime = async (req, res) => {
         console.log(distanceTime);
         res.status(200).json({distanceTime});
     } catch (error) {
-        console.log(error);
         res.status(400).json({error: 'Unable to fetch distance and time'});
     }
 }
@@ -56,7 +55,6 @@ const getAutoCompleteSuggestions = async (req, res) => {
         const suggestions = await mapsService.getAutoCompleteSuggestions(input);
         res.status(200).json({suggestions});
     } catch (error) {
-        console.log(error);
         res.status(400).json({error: 'Unable to fetch suggestions'});
     }
 }
