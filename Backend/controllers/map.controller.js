@@ -25,4 +25,23 @@ const getCoordinates = async (req, res) => {
     }
 }
 
-module.exports = {getCoordinates};
+const getDistanceTime = async (req, res) => {
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    
+        const {origin, destination} = req.query;
+        console.log(origin, destination);
+    try {
+        const distanceTime = await mapsService.getDistanceTime(origin, destination);
+        console.log(distanceTime);
+        res.status(200).json({distanceTime});
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({error: 'Unable to fetch distance and time'});
+    }
+}
+
+module.exports = {getCoordinates , getDistanceTime};
