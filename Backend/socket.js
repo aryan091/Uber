@@ -53,7 +53,8 @@ function initializeSocket(server) {
 
 const sendMessageToSocketId = (socketId, messageObject) => {
 
-console.log(messageObject);
+console.log(messageObject,socketId,
+);
 
     if (io) {
         io.to(socketId).emit(messageObject.event, messageObject.data);

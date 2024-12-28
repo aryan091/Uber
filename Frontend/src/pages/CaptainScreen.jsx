@@ -45,7 +45,7 @@ const CaptainScreen = () => {
   }, []);
   
   socket.on('new-ride', (data) => {
-    console.log(data);
+    console.log("Data :-> " , data);
   })
 
   useGSAP(() => {
