@@ -1,34 +1,28 @@
 import React from "react";
 
-const LocationSearchPanel = ({setPanelOpen,setVehiclePanel}) => {
-
-  const locations = ["Jagti Colony, Nagrota, Jammu", "Habba Kadal, Srinagar", "Rohan Ananta, Pune , Maharashtra"];
+const LocationSearchPanel = ({ suggestions, setPanelOpen, setVehiclePanel, setPickup, setDestination, activeField }) => {
+  const handleSuggestionClick = (suggestion) => {
+    if (activeField === 'pickup') {
+      setPickup(suggestion.description);
+    } else if (activeField === 'destination') {
+      setDestination(suggestion.description);
+    }
+  };
 
   return (
-
-    
-    <div className="flex flex-col gap-2">
-
-{
-      locations.map((location) => {
-        return (
-          <div
-          onClick={() => {
-            setVehiclePanel(true)
-            setPanelOpen(false)
-          }} 
-           className="flex items-center border-2 rounded-lg p-2 active:border-black justify-start gap-2">
-            <h2 className="bg-[#eee] h-10 w-10 flex items-center justify-center rounded-full">
-              <i className="ri-map-pin-line "></i>
-            </h2>
-            <h4 className="font-medium">{location}</h4>
+    <div>
+      {Array.isArray(suggestions) && suggestions.map((suggestion, idx) => (
+        <div
+          key={idx}
+          onClick={() => handleSuggestionClick(suggestion)}
+          className="flex gap-4 border-2 p-3 border-gray-50 active:border-black rounded-xl items-center my-2 justify-start hover:bg-gray-50 cursor-pointer"
+        >
+          <div className="bg-gray-200 h-8 flex items-center justify-center w-12 rounded-full">
+            <i className="ri-map-pin-fill text-gray-600"></i>
           </div>
-        )
-      })
-    }
-
-
-      
+          <h4 className="font-medium">{suggestion.description}</h4>
+        </div>
+      ))}
     </div>
   );
 };

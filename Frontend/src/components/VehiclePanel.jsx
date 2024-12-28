@@ -1,6 +1,6 @@
 import React from 'react'
 
-const VehiclePanel = ({setVehiclePanel , setConfirmRidePanel}) => {
+const VehiclePanel = ({setVehiclePanel , setConfirmRidePanel , fare}) => {
   return (
     <div>
         <h5
@@ -37,7 +37,7 @@ const VehiclePanel = ({setVehiclePanel , setConfirmRidePanel}) => {
             <p className="font-normal text-xs text-gray-600">Affordable, compact rides</p>
           </div>
 
-          <h2 className="font-semibold text-lg">₹193.20</h2>
+          <h2 className="font-semibold text-lg">₹{fare.car}</h2>
 
         </div>
 
@@ -64,7 +64,7 @@ const VehiclePanel = ({setVehiclePanel , setConfirmRidePanel}) => {
             <p className="font-normal text-xs text-gray-600">Affordable motorcycle rides</p>
           </div>
 
-          <h2 className="font-semibold text-lg">₹65.17</h2>
+          <h2 className="font-semibold text-lg">₹{fare.moto}</h2>
 
         </div>
 
@@ -91,7 +91,7 @@ const VehiclePanel = ({setVehiclePanel , setConfirmRidePanel}) => {
             <p className="font-normal text-xs text-gray-600">Affordable auto rides</p>
           </div>
 
-          <h2 className="font-semibold text-lg">₹90.45</h2>
+          <h2 className="font-semibold text-lg">₹{fare.auto}</h2>
 
         </div>
 
