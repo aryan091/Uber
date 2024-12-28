@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState , useEffect  } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import "remixicon/fonts/remixicon.css";
@@ -8,6 +8,9 @@ import ConfirmedRide from "../components/ConfirmedRide";
 import LookingForDriver from "../components/LookingForDriver";
 import WaitingforDriver from "../components/WaitingforDriver";
 import axios from "axios";
+import {UserDataContext} from "../context/UserContext";
+import { useContext } from 'react';
+import { SocketDataContext } from '../context/SocketContext';
 
 const HomeScreen = () => {
   const [pickup, setPickup] = useState("");
@@ -24,6 +27,7 @@ const HomeScreen = () => {
   const [fare, setFare] = useState({});
   const [vehicleType, setVehicleType] = useState(null);
   const [ride, setRide] = useState(null);
+
   
 
   const panelRef = useRef(null);
@@ -32,6 +36,24 @@ const HomeScreen = () => {
   const confirmedRidePanelRef = useRef(null);
   const vehicleFoundRef = useRef(null);
   const waitingForDriverRef = useRef(null);
+
+
+  const {user} = useContext(UserDataContext);
+
+  
+  const { socket } = useContext(SocketDataContext);
+
+useEffect(() => {
+  socket.emit('join',{userType : "user" , userId : user._id});
+}, []);
+
+
+
+  /**
+   * Handles changes to the pickup input field
+   * @param {React.ChangeEvent<HTMLInputElement>} e
+   * @returns {Promise<void>}
+   */
 
   const handlePickupChange = async (e) => {
     setPickup(e.target.value);
