@@ -1,6 +1,6 @@
 import React from 'react'
 
-const VehiclePanel = ({setVehiclePanel , setConfirmRidePanel , fare}) => {
+const VehiclePanel = ({setVehiclePanel , setConfirmRidePanel , fare , setVehicleType}) => {
   return (
     <div>
         <h5
@@ -18,6 +18,8 @@ const VehiclePanel = ({setVehiclePanel , setConfirmRidePanel , fare}) => {
         <div
         onClick={() => {
           setConfirmRidePanel(true);
+          setVehicleType('car');
+          
         }}
          className="flex w-full items-center justify-between bg-white p-3 border-2 active:border-black mb-2 rounded-xl">
           <img
@@ -45,6 +47,7 @@ const VehiclePanel = ({setVehiclePanel , setConfirmRidePanel , fare}) => {
         <div 
         onClick={() => {
             setConfirmRidePanel(true);
+            setVehicleType('moto');
           }}
         className="flex w-full items-center justify-between bg-white p-3 border-2 active:border-black mb-2 rounded-xl">
           <img
@@ -72,6 +75,7 @@ const VehiclePanel = ({setVehiclePanel , setConfirmRidePanel , fare}) => {
         <div
         onClick={() => {
             setConfirmRidePanel(true);
+            setVehicleType("auto");
           }}
          className="flex w-full items-center justify-between bg-white p-3 border-2 active:border-black mb-2 rounded-xl">
           <img

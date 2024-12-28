@@ -1,6 +1,15 @@
 import React from "react";
-  
-const ConfirmedRide = ({ setConfirmRidePanel, setVehiclePanel , setVehicleFound}) => {
+
+const ConfirmedRide = ({
+  setConfirmRidePanel,
+  setVehiclePanel,
+  setVehicleFound,
+  createRide,
+  pickup,
+  destination,
+  vehicleType,
+  fare,
+}) => {
   return (
     <div>
       <h5
@@ -22,44 +31,51 @@ const ConfirmedRide = ({ setConfirmRidePanel, setVehiclePanel , setVehicleFound}
         />
 
         <div className="w-full flex flex-col gap-4">
+
           <div className="flex gap-4 items-center border-b-2 p-2">
             <i className="ri-map-pin-2-fill text-lg"></i>
             <div>
-              <h3 className="text-lg font-medium">526/11-A</h3>
+              <h3 className="text-lg font-medium">
+                {" "}
+                {pickup.substring(0, pickup.lastIndexOf(","))}
+              </h3>
               <p className="text-sm -mt-1 text-gray-600">
-                Jagti Colony, Nagrota, Jammu
+                {pickup.substring(pickup.lastIndexOf(",") + 1).trim()}
               </p>
             </div>
           </div>
 
           <div className="flex gap-4 items-center border-b-2 p-2">
-          <i className="ri-square-fill text-lg"></i>
+            <i className="ri-square-fill text-lg"></i>
             <div>
-              <h3 className="text-lg font-medium">526/11-A</h3>
+              <h3 className="text-lg font-medium">
+                {destination.substring(0, destination.lastIndexOf(","))}
+              </h3>
               <p className="text-sm -mt-1 text-gray-600">
-                Jagti Colony, Nagrota, Jammu
+                {destination.substring(destination.lastIndexOf(",") + 1).trim()}
               </p>
             </div>
           </div>
 
           <div className="flex gap-4 items-center p-2">
-          <i className="ri-cash-line text-lg"></i>          
-          <div>
-              <h3 className="text-lg font-medium">₹163.45</h3>
-              <p className="text-sm -mt-1 text-gray-600">
-                Cash
-              </p>
+            <i className="ri-cash-line text-lg"></i>
+            <div>
+              <h3 className="text-lg font-medium">₹{fare[vehicleType]}</h3>
+              <p className="text-sm -mt-1 text-gray-600">Cash</p>
             </div>
           </div>
-
         </div>
 
-        <button onClick={
-          () => {
-              setConfirmRidePanel(false)
-              setVehicleFound(true)
-          }
-        } className="w-full bg-black text-white py-3 mt-3">Confirm</button>
+        <button
+          onClick={() => {
+            setConfirmRidePanel(false);
+            setVehicleFound(true);
+            createRide();
+          }}
+          className="w-full bg-black text-white py-3 mt-3"
+        >
+          Confirm
+        </button>
       </div>
     </div>
   );

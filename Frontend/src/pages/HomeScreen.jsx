@@ -163,12 +163,26 @@ const HomeScreen = () => {
   })
 
 
-  console.log("Fare Data",response.data)
-
   setFare(response.data)
 
 
 }
+
+async function createRide() {
+  const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/create`, {
+      pickup,
+      destination,
+      vehicleType
+  }, {
+      headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+  })
+
+  console.log(response.data)
+
+}
+
   
 
   return (
@@ -256,6 +270,7 @@ const HomeScreen = () => {
           setVehiclePanel={setVehiclePanel}
           setConfirmRidePanel={setConfirmRidePanel}
           fare={fare}
+          setVehicleType={setVehicleType}
         />
       </div>
 
@@ -267,6 +282,12 @@ const HomeScreen = () => {
           setConfirmRidePanel={setConfirmRidePanel}
           setVehiclePanel={setVehiclePanel}
           setVehicleFound={setVehicleFound}
+          createRide={createRide}
+          pickup={pickup}
+          destination={destination}
+          vehicleType={vehicleType}
+          fare={fare}
+
         />
       </div>
 
@@ -274,7 +295,13 @@ const HomeScreen = () => {
         ref={vehicleFoundRef}
         className="fixed w-full bg-white z-10 translate-y-full bottom-0 px-3 py-8"
       >
-        <LookingForDriver setVehicleFound={setVehicleFound} />
+        <LookingForDriver 
+        setVehicleFound={setVehicleFound}
+        pickup={pickup}
+        destination={destination}
+        vehicleType={vehicleType}
+        fare={fare}
+         />
       </div>
 
       <div
