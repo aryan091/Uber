@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const bycrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+
 
 const rideSchema = new mongoose.Schema({
     user: {
@@ -55,6 +54,11 @@ const rideSchema = new mongoose.Schema({
         required: true,
         default: Date.now,
     },
+    otp:{
+        type: String,
+        select: false,
+        required: true
+    }
 });     
 
 module.exports = mongoose.model("ride", rideSchema);    
