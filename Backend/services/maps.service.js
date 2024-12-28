@@ -1,4 +1,5 @@
 const axios = require('axios');
+const captainModel = require("../models/captain.model");
 /**
  * @function getAddressCoordinate
  * @description Get the coordinates of a given address.
@@ -21,7 +22,7 @@ module.exports.getAddressCoordinate = async (address) => {
 
         const location = response.data.results[0].geometry.location;
         return{
-            lat: location.lat,
+            ltd: location.lat,
             lng: location.lng
         }
 
@@ -77,210 +78,7 @@ module.exports.getDistanceTime = async (origin, destination) => {
  * @throws {Error} If the API call fails or the query is invalid.
  */
 
-// {
-//     "suggestions": [
-//         {
-//             "description": "Jagraon, Punjab, India",
-//             "matched_substrings": [
-//                 {
-//                     "length": 3,
-//                     "offset": 0
-//                 }
-//             ],
-//             "place_id": "ChIJVzJqmpudEDkRfcknwGKcOt8",
-//             "reference": "ChIJVzJqmpudEDkRfcknwGKcOt8",
-//             "structured_formatting": {
-//                 "main_text": "Jagraon",
-//                 "main_text_matched_substrings": [
-//                     {
-//                         "length": 3,
-//                         "offset": 0
-//                     }
-//                 ],
-//                 "secondary_text": "Punjab, India"
-//             },
-//             "terms": [
-//                 {
-//                     "offset": 0,
-//                     "value": "Jagraon"
-//                 },
-//                 {
-//                     "offset": 9,
-//                     "value": "Punjab"
-//                 },
-//                 {
-//                     "offset": 17,
-//                     "value": "India"
-//                 }
-//             ],
-//             "types": [
-//                 "geocode",
-//                 "political",
-//                 "locality"
-//             ]
-//         },
-//         {
-//             "description": "Jagadhri, Haryana, India",
-//             "matched_substrings": [
-//                 {
-//                     "length": 3,
-//                     "offset": 0
-//                 }
-//             ],
-//             "place_id": "ChIJ69DAPe77DjkR0kfnMwLFBfE",
-//             "reference": "ChIJ69DAPe77DjkR0kfnMwLFBfE",
-//             "structured_formatting": {
-//                 "main_text": "Jagadhri",
-//                 "main_text_matched_substrings": [
-//                     {
-//                         "length": 3,
-//                         "offset": 0
-//                     }
-//                 ],
-//                 "secondary_text": "Haryana, India"
-//             },
-//             "terms": [
-//                 {
-//                     "offset": 0,
-//                     "value": "Jagadhri"
-//                 },
-//                 {
-//                     "offset": 10,
-//                     "value": "Haryana"
-//                 },
-//                 {
-//                     "offset": 19,
-//                     "value": "India"
-//                 }
-//             ],
-//             "types": [
-//                 "political",
-//                 "locality",
-//                 "geocode"
-//             ]
-//         },
-//         {
-//             "description": "Jagdalpur, Chhattisgarh, India",
-//             "matched_substrings": [
-//                 {
-//                     "length": 3,
-//                     "offset": 0
-//                 }
-//             ],
-//             "place_id": "ChIJ62uuxWsSMDoRpyuVEKzU5Mo",
-//             "reference": "ChIJ62uuxWsSMDoRpyuVEKzU5Mo",
-//             "structured_formatting": {
-//                 "main_text": "Jagdalpur",
-//                 "main_text_matched_substrings": [
-//                     {
-//                         "length": 3,
-//                         "offset": 0
-//                     }
-//                 ],
-//                 "secondary_text": "Chhattisgarh, India"
-//             },
-//             "terms": [
-//                 {
-//                     "offset": 0,
-//                     "value": "Jagdalpur"
-//                 },
-//                 {
-//                     "offset": 11,
-//                     "value": "Chhattisgarh"
-//                 },
-//                 {
-//                     "offset": 25,
-//                     "value": "India"
-//                 }
-//             ],
-//             "types": [
-//                 "geocode",
-//                 "political",
-//                 "locality"
-//             ]
-//         },
-//         {
-//             "description": "Jageshwar Dham, Uttarakhand, India",
-//             "matched_substrings": [
-//                 {
-//                     "length": 3,
-//                     "offset": 0
-//                 }
-//             ],
-//             "place_id": "ChIJ3y-Lb-fOoDkRhphMrdfytQw",
-//             "reference": "ChIJ3y-Lb-fOoDkRhphMrdfytQw",
-//             "structured_formatting": {
-//                 "main_text": "Jageshwar Dham",
-//                 "main_text_matched_substrings": [
-//                     {
-//                         "length": 3,
-//                         "offset": 0
-//                     }
-//                 ],
-//                 "secondary_text": "Uttarakhand, India"
-//             },
-//             "terms": [
-//                 {
-//                     "offset": 0,
-//                     "value": "Jageshwar Dham"
-//                 },
-//                 {
-//                     "offset": 16,
-//                     "value": "Uttarakhand"
-//                 },
-//                 {
-//                     "offset": 29,
-//                     "value": "India"
-//                 }
-//             ],
-//             "types": [
-//                 "political",
-//                 "locality",
-//                 "geocode"
-//             ]
-//         },
-//         {
-//             "description": "Jagtial, Telangana, India",
-//             "matched_substrings": [
-//                 {
-//                     "length": 3,
-//                     "offset": 0
-//                 }
-//             ],
-//             "place_id": "ChIJcQeEToUTzTsRlbg8DHlsw9Q",
-//             "reference": "ChIJcQeEToUTzTsRlbg8DHlsw9Q",
-//             "structured_formatting": {
-//                 "main_text": "Jagtial",
-//                 "main_text_matched_substrings": [
-//                     {
-//                         "length": 3,
-//                         "offset": 0
-//                     }
-//                 ],
-//                 "secondary_text": "Telangana, India"
-//             },
-//             "terms": [
-//                 {
-//                     "offset": 0,
-//                     "value": "Jagtial"
-//                 },
-//                 {
-//                     "offset": 9,
-//                     "value": "Telangana"
-//                 },
-//                 {
-//                     "offset": 20,
-//                     "value": "India"
-//                 }
-//             ],
-//             "types": [
-//                 "geocode",
-//                 "political",
-//                 "locality"
-//             ]
-//         }
-//     ]
-// }
+
 module.exports.getAutoCompleteSuggestions = async (input) => {
     if(!input) throw new Error("Query is required");
     try {
@@ -295,19 +93,19 @@ module.exports.getAutoCompleteSuggestions = async (input) => {
 }
 
 module.exports.getCaptainsInTheRadius = async (ltd, lng, radius) => {
-
-    // radius in km
-
-
-    const captains = await captainModel.find({
+    try {
+      const captains = await captainModel.find({
         location: {
-            $geoWithin: {
-                $centerSphere: [ [ ltd, lng ], radius / 6371 ]
-            }
-        }
-    });
-
-    return captains;
-
-
-}
+          $geoWithin: {
+            $centerSphere: [[lng, ltd], 6000 / 6378.1], // Note: Order is [longitude, latitude]
+          },
+        },
+      });
+  
+      console.log("Captains found: ", captains);
+      return captains;
+    } catch (error) {
+      console.error("Error finding captains in radius:", error);
+      throw new Error("Failed to find captains in the specified radius");
+    }
+  };

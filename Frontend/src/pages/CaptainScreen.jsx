@@ -44,6 +44,9 @@ const CaptainScreen = () => {
 
   }, []);
   
+  socket.on('new-ride', (data) => {
+    console.log(data);
+  })
 
   useGSAP(() => {
     if (ridePopUpPanel) {

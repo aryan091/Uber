@@ -67,27 +67,21 @@ const captainSchema = new mongoose.Schema({
             enum: ["car", "moto","auto"],
         },
     },
-    location : {
-        ltd:{
-            type: Number,
-        }
-        ,
+    
+    location: {
+        ltd: {
+          type: Number,
+        },
         lng: {
-            type: Number,
-        }
+          type: Number,
+        },
+      },
+    },
+    {
+      timestamps: true, 
     }
-}, {
-    createdAt: {
-        type: Date,
-        required: true,
-        default: Date.now,
-    },
-    updatedAt: {
-        type: Date,
-        required: true,
-        default: Date.now,
-    },
-});                     
+  );
+                
 
 captainSchema.methods.generateAuthToken = async function () {
     const token = jwt.sign({ _id: this._id }, process.env.JWT_SECRET,{expiresIn: "24h"});
