@@ -68,7 +68,13 @@ const captainSchema = new mongoose.Schema({
         },
     },
     location : {
-        type:Number,
+        ltd:{
+            type: Number,
+        }
+        ,
+        lng: {
+            type: Number,
+        }
     }
 }, {
     createdAt: {
