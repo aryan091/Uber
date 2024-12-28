@@ -9,7 +9,7 @@ body('vehicle.vehicleName').isLength({min:3}).withMessage("Vehicle Name must be 
 body('vehicle.color').isLength({min:3}).withMessage("Vehicle Color must be at least 3 characters long"),
 body('vehicle.plate').isLength({min:3}).withMessage("Vehicle plate must be at least 3 characters long"),
 body('vehicle.capacity').isNumeric().withMessage("Capacity must be a number"),
-body('vehicle.vehicleType').isIn(['car', 'motorcycle', 'auto']).withMessage("Vehicle type must be car, motorcycle or auto")],captainController.registerCaptain);
+body('vehicle.vehicleType').isIn(['car', 'moto', 'auto']).withMessage("Vehicle type must be car, motorcycle or auto")],captainController.registerCaptain);
 
 router.post("/login",[
     body("email").isEmail().withMessage("Please enter a valid email"),

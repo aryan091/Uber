@@ -10,7 +10,7 @@ router.post("/create",
      [
     body("pickup").isLength({ min: 3 }).withMessage("Source must be at least 3 characters long"),
     body("destination").isLength({ min: 3 }).withMessage("Destination must be at least 3 characters long"),
-    body("vehicleType").isIn(['car', 'moto', 'auto']).withMessage("Vehicle type must be car, motorcycle or auto"),
+    body("vehicleType").isIn(['car', 'moto', 'auto']).withMessage("Vehicle type must be car, moto or auto")
     
 ] , rideController.createRide);
 
