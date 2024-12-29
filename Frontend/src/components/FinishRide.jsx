@@ -1,7 +1,29 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+import axios from 'axios';
 
 const FinishRide = ({setFinishRide , ride}) => {
+
+const navigate = useNavigate()
+  async function endRide() {
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/end-ride`, {
+
+        rideId: ride._id
+
+
+    }, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+
+    if (response.status === 200) {
+        setFinishRide(false)
+        navigate('/captainScreen')
+    }
+
+}
+
   return (
     <div className="mt-4">
     <h5
@@ -81,12 +103,12 @@ const FinishRide = ({setFinishRide , ride}) => {
 <div className="flex flex-col items-center justify-between w-full gap-2">
 
 
-          <Link
-            to="/captainScreen"
-            className="w-full flex justify-center font-medium bg-black text-white py-3 mt-3"
+          <button
+            className="w-full font-medium bg-black text-white py-3 mt-3"
+            onClick={(e) =>endRide(e) }
           >
             Finish Ride
-          </Link>
+          </button>
           <p className='text-xs text-wrap font-semibold text-center text-red-500 mt-10'>Click here to finish the ride if you have reached your destination</p>
 </div>
           
