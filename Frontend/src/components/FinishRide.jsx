@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-const FinishRide = ({setFinishRide}) => {
+const FinishRide = ({setFinishRide , ride}) => {
   return (
     <div className="mt-4">
     <h5
@@ -22,37 +22,52 @@ const FinishRide = ({setFinishRide}) => {
           src="https://avatars.githubusercontent.com/u/59964730?v=4"
           alt=""
         />
-        <h4 className="text-lg font-medium">Aryan Daftari</h4>
+        <h4 className="text-lg font-medium">{ride?.user?.fullname?.firstname +
+              " " +
+              ride?.user?.fullname?.lastname}</h4>
       </div>
       <h5 className="text-lg font-semibold">2.2 Km</h5>
     </div>
 
     <div className="flex justify-between flex-col items-center gap-4">
       <div className="w-full flex flex-col gap-4">
-        <div className="flex gap-4 items-center border-b-2 p-2">
-          <i className="ri-map-pin-2-fill text-lg"></i>
-          <div>
-            <h3 className="text-lg font-medium">526/11-A</h3>
-            <p className="text-sm -mt-1 text-gray-600">
-              Jagti Colony, Nagrota, Jammu
-            </p>
-          </div>
-        </div>
 
         <div className="flex gap-4 items-center border-b-2 p-2">
-          <i className="ri-square-fill text-lg"></i>
-          <div>
-            <h3 className="text-lg font-medium">526/11-A</h3>
-            <p className="text-sm -mt-1 text-gray-600">
-              Jagti Colony, Nagrota, Jammu
-            </p>
+            <i className="ri-map-pin-2-fill text-lg"></i>
+            <div>
+              <h3 className="text-lg font-medium">
+                {" "}
+                {ride?.pickup.substring(0, ride?.pickup.lastIndexOf(","))}
+              </h3>
+              <p className="text-sm -mt-1 text-gray-600">
+                {ride?.pickup
+                  .substring(ride?.pickup.lastIndexOf(",") + 1)
+                  .trim()}
+              </p>
+            </div>
           </div>
-        </div>
+
+          <div className="flex gap-4 items-center border-b-2 p-2">
+            <i className="ri-square-fill text-lg"></i>
+            <div>
+              <h3 className="text-lg font-medium">
+                {ride?.destination.substring(
+                  0,
+                  ride?.destination.lastIndexOf(",")
+                )}
+              </h3>
+              <p className="text-sm -mt-1 text-gray-600">
+                {ride?.destination
+                  .substring(ride?.destination.lastIndexOf(",") + 1)
+                  .trim()}
+              </p>
+            </div>
+          </div>
 
         <div className="flex gap-4 items-center p-2">
           <i className="ri-cash-line text-lg"></i>
           <div>
-            <h3 className="text-lg font-medium">₹163.45</h3>
+            <h3 className="text-lg font-medium">₹{ride?.fare}</h3>
             <p className="text-sm -mt-1 text-gray-600">Cash</p>
           </div>
         </div>

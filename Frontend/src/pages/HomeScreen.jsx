@@ -11,7 +11,7 @@ import axios from "axios";
 import {UserDataContext} from "../context/UserContext";
 import { useContext } from 'react';
 import { SocketDataContext } from '../context/SocketContext';
-
+import {useNavigate} from 'react-router-dom'
 const HomeScreen = () => {
   const [pickup, setPickup] = useState("");
   const [destination, setDestination] = useState("");
@@ -38,6 +38,8 @@ const HomeScreen = () => {
   const waitingForDriverRef = useRef(null);
 
 
+  const navigate = useNavigate();
+
   const {user} = useContext(UserDataContext);
 
   
@@ -49,11 +51,18 @@ useEffect(() => {
 
 socket.on('ride-confirmed', ride => {
 
-  console.log("ride-confirmed : ->",ride)
 
   setVehicleFound(false)
   setWaitingForDriver(true)
   setRide(ride)
+})
+
+
+socket.on('ride-started', ride => {
+  console.log("ride-started : ->",ride)  
+  setWaitingForDriver(false)
+  setRide(ride)
+  navigate('/riding' , {state : {ride : ride}})
 })
 
   /**
