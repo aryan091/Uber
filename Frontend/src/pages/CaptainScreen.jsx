@@ -8,11 +8,13 @@ import gsap from "gsap";
 import "remixicon/fonts/remixicon.css";
 import { SocketDataContext } from '../context/SocketContext';
 import {CaptainDataContext} from "../context/CaptainContext"
+import axios from "axios";
 
 const CaptainScreen = () => {
 
-  const [ridePopUpPanel , setRidePopUpPanel] = useState(true)
+  const [ridePopUpPanel , setRidePopUpPanel] = useState(false)
   const [confirmRidePopUpPanel , setConfirmRidePopUpPanel] = useState(false)
+  const [ride, setRide] = useState(null);
 
   const ridePopUpRef = useRef(null); 
   const confirmRidePopUpPanelRef = useRef(null);
@@ -45,8 +47,39 @@ const CaptainScreen = () => {
   }, []);
   
   socket.on('new-ride', (data) => {
-    console.log("Data :-> " , data);
+
+    setRide(data);
+    setRidePopUpPanel(true);
   })
+
+
+  
+
+       
+
+  async function confirmRide() {
+
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/confirm`, {
+
+        rideId: ride._id,
+        captainId: captain._id,
+
+
+    }, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+    console.log("Confirm Ride :",response.data)
+
+    setRidePopUpPanel(false)
+    setConfirmRidePopUpPanel(true)
+
+}
+
+
+
+
 
   useGSAP(() => {
     if (ridePopUpPanel) {
@@ -104,7 +137,10 @@ const CaptainScreen = () => {
       </div>
 
       <div ref={ridePopUpRef}  className="fixed w-full bg-white z-10 translate-y-full bottom-0 px-3 py-8">
-        <RidePopUp setRidePopUpPanel={setRidePopUpPanel} setConfirmRidePopUpPanel={setConfirmRidePopUpPanel}/>
+        <RidePopUp setRidePopUpPanel={setRidePopUpPanel} setConfirmRidePopUpPanel={setConfirmRidePopUpPanel}
+        confirmRide={confirmRide}
+        ride={ride}
+        />
       </div>
 
 

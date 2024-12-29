@@ -47,7 +47,13 @@ useEffect(() => {
   socket.emit('join',{userType : "user" , userId : user._id});
 }, []);
 
+socket.on('ride-confirmed', ride => {
 
+
+  setVehicleFound(false)
+  setWaitingForDriver(true)
+  setRide(ride)
+})
 
   /**
    * Handles changes to the pickup input field
@@ -201,7 +207,6 @@ async function createRide() {
       }
   })
 
-  console.log(response.data)
 
 }
 
