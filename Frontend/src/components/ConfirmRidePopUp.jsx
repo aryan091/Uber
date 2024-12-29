@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const ConfirmRidePopUp = ({ setConfirmRidePopUpPanel, setRidePopUpPanel }) => {
+const ConfirmRidePopUp = ({ setConfirmRidePopUpPanel, setRidePopUpPanel , ride }) => {
 
     const [otp , setOtp] = useState('');
   const submitHandler = (e) => {
@@ -28,19 +28,23 @@ const ConfirmRidePopUp = ({ setConfirmRidePopUpPanel, setRidePopUpPanel }) => {
             src="https://avatars.githubusercontent.com/u/59964730?v=4"
             alt=""
           />
-          <h4 className="text-lg font-medium">Aryan Daftari</h4>
+          <h4 className="text-lg font-medium">{ride?.user?.fullname?.firstname + " " + ride?.user?.fullname?.lastname}</h4>
         </div>
         <h5 className="text-lg font-semibold">2.2 Km</h5>
       </div>
 
       <div className="flex justify-between flex-col items-center gap-4">
         <div className="w-full flex flex-col gap-4">
+
           <div className="flex gap-4 items-center border-b-2 p-2">
             <i className="ri-map-pin-2-fill text-lg"></i>
             <div>
-              <h3 className="text-lg font-medium">526/11-A</h3>
+              <h3 className="text-lg font-medium">
+                {" "}
+                {ride?.pickup.substring(0, ride?.pickup.lastIndexOf(","))}
+              </h3>
               <p className="text-sm -mt-1 text-gray-600">
-                Jagti Colony, Nagrota, Jammu
+                {ride?.pickup.substring(ride?.pickup.lastIndexOf(",") + 1).trim()}
               </p>
             </div>
           </div>
@@ -48,9 +52,11 @@ const ConfirmRidePopUp = ({ setConfirmRidePopUpPanel, setRidePopUpPanel }) => {
           <div className="flex gap-4 items-center border-b-2 p-2">
             <i className="ri-square-fill text-lg"></i>
             <div>
-              <h3 className="text-lg font-medium">526/11-A</h3>
+              <h3 className="text-lg font-medium">
+                {ride?.destination.substring(0, ride?.destination.lastIndexOf(","))}
+              </h3>
               <p className="text-sm -mt-1 text-gray-600">
-                Jagti Colony, Nagrota, Jammu
+                {ride?.destination.substring(ride?.destination.lastIndexOf(",") + 1).trim()}
               </p>
             </div>
           </div>
@@ -58,7 +64,7 @@ const ConfirmRidePopUp = ({ setConfirmRidePopUpPanel, setRidePopUpPanel }) => {
           <div className="flex gap-4 items-center p-2">
             <i className="ri-cash-line text-lg"></i>
             <div>
-              <h3 className="text-lg font-medium">₹163.45</h3>
+              <h3 className="text-lg font-medium">₹{ride?.fare}</h3>
               <p className="text-sm -mt-1 text-gray-600">Cash</p>
             </div>
           </div>

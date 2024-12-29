@@ -49,6 +49,7 @@ useEffect(() => {
 
 socket.on('ride-confirmed', ride => {
 
+  console.log("ride-confirmed : ->",ride)
 
   setVehicleFound(false)
   setWaitingForDriver(true)
@@ -338,6 +339,7 @@ async function createRide() {
         <WaitingforDriver
           setWaitingForDriver={setWaitingForDriver}
           setVehicleFound={setVehicleFound}
+          ride={ride}
         />
       </div>
     </div>

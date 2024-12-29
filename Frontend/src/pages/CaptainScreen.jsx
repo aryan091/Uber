@@ -145,7 +145,9 @@ const CaptainScreen = () => {
 
 
       <div ref={confirmRidePopUpPanelRef} className="fixed w-full bg-white h-screen z-10 translate-y-full bottom-0 px-3 py-8">
-        <ConfirmRidePopUp setConfirmRidePopUpPanel={setConfirmRidePopUpPanel} setRidePopUpPanel={setRidePopUpPanel} />
+        <ConfirmRidePopUp setConfirmRidePopUpPanel={setConfirmRidePopUpPanel} setRidePopUpPanel={setRidePopUpPanel} 
+                ride={ride}
+/>
       </div>
 
 
