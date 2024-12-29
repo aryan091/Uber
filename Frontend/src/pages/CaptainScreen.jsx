@@ -9,6 +9,7 @@ import "remixicon/fonts/remixicon.css";
 import { SocketDataContext } from '../context/SocketContext';
 import {CaptainDataContext} from "../context/CaptainContext"
 import axios from "axios";
+import LiveTracking from "../components/LiveTracking";
 
 const CaptainScreen = () => {
 
@@ -124,11 +125,7 @@ const CaptainScreen = () => {
       </div>
 
       <div className="h-3/5">
-        <img
-          className="w-full h-full object-cover"
-          src="https://miro.medium.com/v2/resize:fit:828/format:webp/0*gwMx05pqII5hbfmX.gif"
-          alt=""
-        />
+        <LiveTracking/>
       </div>
 
 

@@ -4,6 +4,7 @@ import "remixicon/fonts/remixicon.css";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import FinishRide from "../components/FinishRide";
+import LiveTracking from "../components/LiveTracking";
 
 const CaptainRiding = () => {
   const [finishRide, setFinishRide] = useState(false);
@@ -42,11 +43,7 @@ const CaptainRiding = () => {
       </div>
 
       <div className="h-4/5">
-        <img
-          className="w-full h-full object-cover"
-          src="https://miro.medium.com/v2/resize:fit:828/format:webp/0*gwMx05pqII5hbfmX.gif"
-          alt=""
-        />
+        <LiveTracking />
       </div>
 
       <div className="h-1/5 p-6 flex  items-center justify-between relative bg-yellow-400 pt-10">
