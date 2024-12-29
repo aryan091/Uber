@@ -1,6 +1,6 @@
 import React from 'react'
 
-const WaitingforDriver = ({setWaitingForDriver , setVehicleFound , ride}) => {
+const WaitingforDriver = ({setWaitingForDriver , setVehicleFound , ride , vehicleType}) => {
   return (
 <div>
       <h5

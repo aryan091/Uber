@@ -345,6 +345,7 @@ async function createRide() {
         <WaitingforDriver
           setWaitingForDriver={setWaitingForDriver}
           setVehicleFound={setVehicleFound}
+          vehicleType={vehicleType}
           ride={ride}
         />
       </div>
